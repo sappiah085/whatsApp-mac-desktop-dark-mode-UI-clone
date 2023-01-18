@@ -1,8 +1,19 @@
-import { Avatar, Button, Grid, IconButton, Typography } from "@mui/material";
+import {
+  Avatar,
+  Button,
+  Grid,
+  IconButton,
+  Typography,
+  Switch,
+} from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import imagee from "./real.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsFillTelephoneFill, BsFillCameraVideoFill } from "react-icons/bs";
+import { IoIosArrowForward, IoIosTimer, IoMdLock } from "react-icons/io";
+import { FaStar, FaBell } from "react-icons/fa";
+import { AiOutlineStop, AiTwotoneDislike } from "react-icons/ai";
+import { RiDeleteBinLine } from "react-icons/ri";
 export default function Edit() {
   const params = useParams();
   const navigate = useNavigate();
@@ -15,7 +26,10 @@ export default function Edit() {
       height={"100vh"}
       flexDirection={"column"}
       alignItems={"center"}
-      gap={3}
+      gap={2}
+      flexWrap={"nowrap"}
+      overflow={"scroll"}
+      pb={10}
     >
       <Grid
         container
@@ -111,6 +125,249 @@ export default function Edit() {
           About
         </Typography>
         <Typography fontWeight={500}>The Lord our Righteousness</Typography>
+      </Grid>
+      <Grid
+        bgcolor={"rgb(19,26,33)"}
+        alignItems={"center"}
+        width={"100%"}
+        padding={2}
+        flexWrap={"nowrap"}
+        container
+        sx={{ cursor: "pointer" }}
+        justifyContent={"space-between"}
+      >
+        <Typography
+          color={" #b7d2dfb5"}
+          padding={"0"}
+          margin={"0"}
+          fontWeight={500}
+        >
+          Media, links and docs
+        </Typography>
+        <Typography
+          sx={{ display: "flex", alignItems: "center" }}
+          color={" #b7d2dfb5"}
+          fontWeight={500}
+        >
+          0 <IoIosArrowForward />
+        </Typography>
+      </Grid>
+      <Grid
+        bgcolor={"rgb(19,26,33)"}
+        alignItems={"center"}
+        width={"100%"}
+        padding={2}
+        flexDirection={"column"}
+        container
+      >
+        <Grid
+          bgcolor={"rgb(19,26,33)"}
+          alignItems={"center"}
+          width={"100%"}
+          padding={2}
+          flexWrap={"nowrap"}
+          container
+          sx={{ cursor: "pointer" }}
+          justifyContent={"space-between"}
+        >
+          <Typography
+            color={" #b7d2dfb5"}
+            padding={"0"}
+            margin={"0"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "center", gap: 3 }}
+          >
+            <FaStar />
+            <span style={{ color: "white" }}> Starred messages</span>
+          </Typography>
+          <Typography color={" #b7d2dfb5"} fontWeight={500}>
+            <IoIosArrowForward />
+          </Typography>
+        </Grid>
+        <Grid
+          bgcolor={"rgb(19,26,33)"}
+          alignItems={"center"}
+          width={"100%"}
+          padding={2}
+          flexWrap={"nowrap"}
+          container
+          sx={{ cursor: "pointer" }}
+          justifyContent={"space-between"}
+        >
+          <Typography
+            color={" #b7d2dfb5"}
+            padding={"0"}
+            margin={"0"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "center", gap: 3 }}
+          >
+            <FaBell />
+            <span style={{ color: "white" }}>Mute notifications</span>
+          </Typography>
+          <Switch />
+        </Grid>
+        <Grid
+          bgcolor={"rgb(19,26,33)"}
+          alignItems={"center"}
+          width={"100%"}
+          padding={2}
+          flexWrap={"nowrap"}
+          container
+          sx={{ cursor: "pointer" }}
+          justifyContent={"space-between"}
+        >
+          <Typography
+            color={" #b7d2dfb5"}
+            padding={"0"}
+            margin={"0"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "flex-start", gap: 3 }}
+          >
+            <IoIosTimer />
+            <span style={{ display: "flex", flexDirection: "column" }}>
+              <span style={{ color: "white" }}>Mute notifications</span>
+              off
+            </span>
+          </Typography>
+          <Typography
+            color={" #b7d2dfb5"}
+            padding={"0"}
+            margin={"0"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "center", gap: 3 }}
+          >
+            <IoIosArrowForward />
+          </Typography>
+        </Grid>
+        <Grid
+          bgcolor={"rgb(19,26,33)"}
+          alignItems={"center"}
+          width={"100%"}
+          padding={2}
+          flexWrap={"nowrap"}
+          container
+          sx={{ cursor: "pointer" }}
+          justifyContent={"space-between"}
+        >
+          <Typography
+            color={" #b7d2dfb5"}
+            padding={"0"}
+            margin={"0"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "flex-start", gap: 3 }}
+          >
+            <IoMdLock />
+            <span
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "200px",
+              }}
+            >
+              <span style={{ color: "white" }}>Encryption</span>
+              Messages and calls are end-to-end encrypted. Click to verify.
+            </span>
+          </Typography>
+          <Typography
+            color={" #b7d2dfb5"}
+            padding={"0"}
+            margin={"0"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "center", gap: 3 }}
+          >
+            <IoIosArrowForward />
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid
+        bgcolor={"rgb(19,26,33)"}
+        alignItems={"center"}
+        width={"100%"}
+        padding={"0 2"}
+        flexDirection={"column"}
+        container
+      >
+        <Grid
+          bgcolor={"rgb(19,26,33)"}
+          alignItems={"center"}
+          width={"100%"}
+          padding={2}
+          flexWrap={"nowrap"}
+          container
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              backgroundColor: "#b7d2df26",
+            },
+          }}
+          justifyContent={"space-between"}
+        >
+          <Typography
+            color={" #d32f2f"}
+            padding={"0"}
+            margin={"0"}
+            fontSize={"1.2rem"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "center", gap: 3 }}
+          >
+            <AiOutlineStop />
+            Block {params.id}
+          </Typography>
+        </Grid>
+        <Grid
+          bgcolor={"rgb(19,26,33)"}
+          alignItems={"center"}
+          width={"100%"}
+          padding={2}
+          flexWrap={"nowrap"}
+          container
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              backgroundColor: "#b7d2df26",
+            },
+          }}
+          justifyContent={"space-between"}
+        >
+          <Typography
+            color={" #d32f2f"}
+            padding={"0"}
+            margin={"0"}
+            fontSize={"1.2rem"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "center", gap: 3 }}
+          >
+            <AiTwotoneDislike />
+            Report {params.id}
+          </Typography>
+        </Grid>
+        <Grid
+          bgcolor={"rgb(19,26,33)"}
+          alignItems={"center"}
+          width={"100%"}
+          padding={2}
+          flexWrap={"nowrap"}
+          container
+          sx={{
+            cursor: "pointer",
+            "&:hover": {
+              backgroundColor: "#b7d2df26",
+            },
+          }}
+          justifyContent={"space-between"}
+        >
+          <Typography
+            color={" #d32f2f"}
+            padding={"0"}
+            margin={"0"}
+            fontSize={"1.2rem"}
+            fontWeight={500}
+            sx={{ display: "flex", alignItems: "center", gap: 3 }}
+          >
+            <RiDeleteBinLine />
+            Delete chat
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );

@@ -63,11 +63,16 @@ export default function NavBar() {
         <Avatar alt="friend" src={image} />
         <Typography
           variant="body1"
-          fontWeight={900}
+          fontWeight={500}
           component={"p"}
-          sx={{ color: "#fff" }}
+          sx={{ color: "#fff", display: "flex", flexDirection: "column" }}
         >
           {params.id}
+          <span
+            style={{ color: "#b7d2dfb5", fontWeight: 400, fontSize: ".9rem" }}
+          >
+            last seen today at 9:20 PM
+          </span>
         </Typography>
       </span>
       <span
