@@ -11,10 +11,48 @@ import { CiSearch } from "react-icons/ci";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Menu from "../menu/menu";
 export default function ChatBar() {
   const [focus, setFocus] = useState(false);
   const input: any = useRef(null);
   const navigate = useNavigate();
+  type item = {
+    item: string;
+  };
+  const list: item[] = [
+    {
+      item: "Archive chat",
+    },
+    {
+      item: "Mute notifications",
+    },
+    {
+      item: "Delete chat",
+    },
+    {
+      item: "Pin chat",
+    },
+    {
+      item: "Mark as  unread",
+    },
+  ];
+  const list2: item[] = [
+    {
+      item: "New group",
+    },
+    {
+      item: "New community",
+    },
+    {
+      item: "Starred messages",
+    },
+    {
+      item: "Settings",
+    },
+    {
+      item: "Log out",
+    },
+  ];
   useEffect(() => {
     input.current?.addEventListener("focusin", () => {
       setFocus(true);
@@ -58,6 +96,7 @@ export default function ChatBar() {
           width="100%"
           bgcolor={"rgb(33,47,52)"}
           padding={".5em"}
+          sx={{ "--display": "flex" }}
         >
           <Avatar alt="friend" src={image} />
           <IconButton
@@ -98,16 +137,9 @@ export default function ChatBar() {
           >
             <BsPencilSquare />
           </IconButton>
-          <IconButton
-            sx={{
-              color: "#eceff1",
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            }}
-          >
+          <Menu list={list2}>
             <RiArrowDownSLine />
-          </IconButton>
+          </Menu>
         </Grid>
         <Grid
           container
@@ -209,23 +241,7 @@ export default function ChatBar() {
         </span>
         <Typography sx={{ color: "#009688" }}>1</Typography>
       </Grid>
-      {[
-        "AMA",
-        "K MA🤡",
-        "A KA",
-        "AHA",
-        "A M R",
-        "A HA",
-        "A PA",
-        "AJL A",
-        "AIK A",
-        "kLN",
-        "A😉 A",
-        "A JA",
-        "A Mö",
-        "A LA",
-        "A löA",
-      ].map((el, id) => (
+      {["AMA", "K MA🤡", "A KA", "A😉 A", "A JA"].map((el, id) => (
         <Grid
           key={id}
           container
@@ -234,7 +250,6 @@ export default function ChatBar() {
           justifyContent={"center"}
           gap={1.5}
           padding={"0 1em"}
-          onClick={() => navigate(`/${el}`)}
           sx={{
             cursor: "pointer",
             "--display": "none",
@@ -246,7 +261,7 @@ export default function ChatBar() {
             },
           }}
         >
-          <Avatar alt="friend" src={image} />
+          <Avatar onClick={() => navigate(`/${el}`)} alt="friend" src={image} />
           <span
             style={{
               padding: ".5em",
@@ -258,7 +273,13 @@ export default function ChatBar() {
               borderRadius: "1px",
             }}
           >
-            <Grid flex={3} container flexDirection={"column"} width={"70%"}>
+            <Grid
+              onClick={() => navigate(`/${el}`)}
+              flex={3}
+              container
+              flexDirection={"column"}
+              width={"70%"}
+            >
               <Typography
                 variant="body1"
                 fontWeight={900}
@@ -316,23 +337,12 @@ export default function ChatBar() {
                     fontSize={".7rem"}
                     sx={{ color: "#263238", margin: 0, padding: 0 }}
                   >
-                    {id+1}
+                    {id + 1}
                   </Typography>
                 </span>
-                <IconButton
-                  sx={{
-                    color: "#eceff1",
-                    display: "var(--display)",
-                    border: "none",
-                    padding: 0,
-                    margin: 0,
-                    "&:hover": {
-                      backgroundColor: "transparent",
-                    },
-                  }}
-                >
+                <Menu list={list}>
                   <RiArrowDownSLine />
-                </IconButton>
+                </Menu>
               </span>
             </Grid>
           </span>

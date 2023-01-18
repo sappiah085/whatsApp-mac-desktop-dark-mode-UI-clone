@@ -29,6 +29,7 @@
   padding: 0.5em 1em;
   border-radius: 10px;
   max-width: 700px;
+  width: 80%;
   text-align: left;
   position: relative;
 }
@@ -50,6 +51,7 @@
   max-width: 700px;
   padding: 0.5em 1em;
   position: relative;
+  width: 80%;
 }
 .mine__message::after {
   content: "";

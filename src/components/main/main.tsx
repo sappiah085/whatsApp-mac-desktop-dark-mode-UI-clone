@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@mui/material";
 import image from "./image.png";
+import { AiTwotoneLock } from "react-icons/ai";
 export default function Main() {
   return (
     <Grid
@@ -28,8 +29,9 @@ export default function Main() {
         padding={"2em"}
         position={"absolute"}
         bottom={0}
+        sx={{ display: "flex", alignItems: "center", gap: ".5em" }}
       >
-        End-to-end encrypted
+        <AiTwotoneLock /> End-to-end encrypted
       </Typography>
     </Grid>
   );

@@ -6,6 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./components/main/main";
 import ChatContent from "./components/content/chatContent";
+import Edit from "./components/edit/edit";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +19,12 @@ const router = createBrowserRouter([
       {
         path: ":id",
         element: <ChatContent />,
+        children: [
+          {
+            path: "edit",
+            element: <Edit />,
+          },
+        ],
       },
     ],
   },
