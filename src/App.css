@@ -1,0 +1,67 @@
+#root {
+  width: 100%;
+}
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+.input__mine {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  outline: none;
+  color: white;
+  width: 90%;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.1em 0;
+}
+.input__mine::placeholder {
+  color: #b7d2dfb5;
+
+  font-weight: 500;
+}
+.friend__message {
+  --display: none;
+  align-self: flex-start;
+  background-color: rgb(33, 47, 52);
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  max-width: 700px;
+  text-align: left;
+  position: relative;
+}
+.friend__message::after {
+  content: "";
+  background-color: rgb(33, 47, 52);
+  position: absolute;
+  height: 1em;
+  width: 1em;
+  top: 0%;
+  left: -9px;
+  border-bottom-left-radius: 70px;
+}
+.mine__message {
+  --display: none;
+  align-self: flex-end;
+  border-radius: 10px;
+  background-color: #075e54;
+  max-width: 700px;
+  padding: 0.5em 1em;
+  position: relative;
+}
+.mine__message::after {
+  content: "";
+  background-color: #075e54;
+  position: absolute;
+  height: 1em;
+  width: 1em;
+  top: 0px;
+  right: -9px;
+  border-bottom-right-radius: 70px;
+}
+.friend__message:hover,
+.mine__message:hover {
+  --display: "flex";
+}
