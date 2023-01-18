@@ -8,10 +8,12 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { AiTwotoneLock } from "react-icons/ai";
 import Menu from "../menu/menu";
 import { Outlet, useLocation, useParams } from "react-router-dom";
+import { useEffect, useRef } from "react";
 export default function ChatContent() {
   const params = useParams();
   const location = useLocation();
   const editPath = location.pathname.indexOf("edit") > -1;
+  const container: any = useRef<HTMLElement | null>(null);
   type item = {
     item: string;
   };
@@ -41,6 +43,11 @@ export default function ChatContent() {
       item: `Message ${params.id}`,
     },
   ];
+
+  useEffect(() => {
+    container.current.scrollTop = container.current.scrollHeight;
+    console.log(container.current.scrollHeight);
+  });
   return (
     <Grid
       width={"70%"}
@@ -63,10 +70,12 @@ export default function ChatContent() {
         flexWrap={"nowrap"}
         pb={10}
         width={"100%"}
+        ref={container}
         sx={{
           backgroundImage: `url(${back})`,
           backgroundSize: "contain",
           overflowY: "scroll",
+          scrollBehavior: "smooth",
         }}
       >
         <NavBar />
