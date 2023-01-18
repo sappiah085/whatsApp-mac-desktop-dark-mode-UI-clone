@@ -18,6 +18,7 @@ export default function ChatContent() {
       overflow={"scroll"}
       padding={"1em"}
       flexWrap={"nowrap"}
+      pb={10}
       sx={{
         backgroundImage: `url(${back})`,
         backgroundSize: "contain",
@@ -625,7 +626,6 @@ export default function ChatContent() {
           <BsMic />
         </IconButton>
       </Grid>
-      <span style={{ marginTop: "10em" }}></span>
     </Grid>
   );
 }

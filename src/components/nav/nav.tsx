@@ -24,7 +24,8 @@ export default function NavBar() {
           display: "flex",
           gap: ".6em",
           alignItems: "center",
-          width: "70%",
+          flexGrow: 1,
+          flexShrink: 1,
         }}
       >
         <Avatar alt="friend" src={image} />
@@ -42,6 +43,7 @@ export default function NavBar() {
           display: "flex",
           gap: "1.2em",
           alignItems: "center",
+          flexWrap: "nowrap",
         }}
       >
         <IconButton
