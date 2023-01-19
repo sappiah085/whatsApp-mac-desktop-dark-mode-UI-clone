@@ -10,11 +10,10 @@ import { CiSearch } from "react-icons/ci";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import Menu from "../menu/menu";
 import { Avatar, Grid, Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function ChatList({ handlclick }: { handlclick: () => void }) {
   const [focus, setFocus] = useState(false);
-  const input: any = useRef(null);
   const navigate = useNavigate();
   type item = {
     item: string;
@@ -53,22 +52,7 @@ export default function ChatList({ handlclick }: { handlclick: () => void }) {
       item: "Log out",
     },
   ];
-  useEffect(() => {
-    // input.current?.addEventListener("focusin", () => {
-    //   setFocus(true);
-    // });
-    // input.current?.addEventListener("focusout", () => {
-    //   setFocus(false);
-    // });
-    // return () => {
-    //   input.current.removeEventListener("focusin", () => {
-    //     setFocus(true);
-    //   });
-    //   input.current.removeEventListener("focusout", () => {
-    //     setFocus(false);
-    //   });
-    // };
-  });
+
   return (
     <>
       <Grid
@@ -182,8 +166,9 @@ export default function ChatList({ handlclick }: { handlclick: () => void }) {
               </IconButton>
             )}
             <input
-              ref={input}
               className="input__mine"
+              onBlur={() => setFocus(false)}
+              onFocus={() => setFocus(true)}
               placeholder="Search or start a new chat"
             />
           </Container>
