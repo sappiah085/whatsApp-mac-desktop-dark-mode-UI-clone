@@ -1,353 +1,137 @@
-import { Avatar, Grid, Typography } from "@mui/material";
-import { IconButton, Badge, Button } from "@mui/material";
-import { HiOutlineUserGroup } from "react-icons/hi";
-import { TbCircleDashed } from "react-icons/tb";
-import { BsPencilSquare, BsFilter } from "react-icons/bs";
-import { RiArrowDownSLine } from "react-icons/ri";
+import { Avatar, Grid, Typography, IconButton } from "@mui/material";
+import { useState } from "react";
+import ChatList from "./chatLis";
+import { RxArrowLeft } from "react-icons/rx";
+import { BsFillCameraFill } from "react-icons/bs";
 import image from "./real.png";
-import { Container } from "@mui/system";
-import { MdArchive } from "react-icons/md";
-import { CiSearch } from "react-icons/ci";
-import { BiLeftArrowAlt } from "react-icons/bi";
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Menu from "../menu/menu";
+import { FaPen } from "react-icons/fa";
 export default function ChatBar() {
-  const [focus, setFocus] = useState(false);
-  const input: any = useRef(null);
-  const navigate = useNavigate();
-  type item = {
-    item: string;
-  };
-  const list: item[] = [
-    {
-      item: "Archive chat",
-    },
-    {
-      item: "Mute notifications",
-    },
-    {
-      item: "Delete chat",
-    },
-    {
-      item: "Pin chat",
-    },
-    {
-      item: "Mark as  unread",
-    },
-  ];
-  const list2: item[] = [
-    {
-      item: "New group",
-    },
-    {
-      item: "New community",
-    },
-    {
-      item: "Starred messages",
-    },
-    {
-      item: "Settings",
-    },
-    {
-      item: "Log out",
-    },
-  ];
-  useEffect(() => {
-    input.current?.addEventListener("focusin", () => {
-      setFocus(true);
-    });
-    input.current?.addEventListener("focusout", () => {
-      setFocus(false);
-    });
-    return () => {
-      input.current.removeEventListener("focusin", () => {
-        setFocus(true);
-      });
-      input.current.removeEventListener("focusout", () => {
-        setFocus(false);
-      });
-    };
-  });
+  const [profile, setProfile] = useState(false);
   return (
     <Grid
       container
-      alignItems={"flex-start"}
-      width={"30%"}
+      alignItems={"center"}
+      width={{ lg: "30%", xs: "50%" }}
       bgcolor={"rgb(19,26,33)"}
       flexDirection={"column"}
       position={"relative"}
       height={"100vh"}
       flexWrap={"nowrap"}
       overflow={"scroll"}
+      px={profile ? 5 : 0}
     >
-      <Grid
-        top={0}
-        container
-        flexDirection="column"
-        width="30%"
-        position={"fixed"}
-        zIndex={200}
-      >
-        <Grid
-          gap={1}
-          container
-          justifyContent={"flex-end"}
-          width="100%"
-          bgcolor={"rgb(33,47,52)"}
-          padding={".5em"}
-          sx={{ "--display": "flex" }}
-        >
-          <Avatar alt="friend" src={image} />
-          <IconButton
-            sx={{
-              color: "#eceff1",
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            }}
+      {!profile && <ChatList handlclick={() => setProfile(true)} />}
+      {profile && (
+        <>
+          <Grid
+            container
+            bgcolor={"rgb(33,47,52)"}
+            padding={"3em 2em 1em 2em"}
+            position={"fixed"}
+            top={0}
+            alignItems={"center"}
+            zIndex={300}
+            gap={3}
+            width={{ lg: "30%", xs: "50%" }}
           >
-            <HiOutlineUserGroup />
-          </IconButton>
-
-          <IconButton
-            sx={{
-              color: "#eceff1",
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            }}
-          >
-            <Badge
-              overlap="circular"
-              color="success"
-              variant="dot"
-              badgeContent=" "
+            <IconButton
+              onClick={() => setProfile(false)}
+              sx={{
+                color: "#eceff1",
+                border: "none",
+                padding: 0,
+                margin: 0,
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
+              }}
             >
-              <TbCircleDashed />
-            </Badge>
-          </IconButton>
-          <IconButton
-            sx={{
-              color: "#eceff1",
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            }}
-          >
-            <BsPencilSquare />
-          </IconButton>
-          <Menu list={list2}>
-            <RiArrowDownSLine />
-          </Menu>
-        </Grid>
-        <Grid
-          container
-          bgcolor={"rgb(19,26,33)"}
-          width="100%"
-          padding={".5em"}
-          gap={1}
-          alignItems={"center"}
-          flexWrap={"nowrap"}
-        >
-          <Container
-            disableGutters
-            sx={{
-              backgroundColor: "rgb(33,47,52)",
-              display: "flex",
-              alignItems: "center",
-              gap: ".5em",
-              borderRadius: 1,
-              width: "87%",
-            }}
-          >
-            {!focus && (
-              <IconButton
-                onClick={() => input.current.focus()}
-                sx={{
-                  color: "#eceff1",
-                  "&:hover": {
-                    backgroundColor: "transparent",
-                  },
-                }}
-              >
-                <CiSearch />
-              </IconButton>
-            )}
-            {focus && (
-              <IconButton
-                sx={{
-                  color: "#009688",
-                  "&:hover": {
-                    backgroundColor: "transparent",
-                  },
-                }}
-              >
-                <BiLeftArrowAlt />
-              </IconButton>
-            )}
-            <input
-              ref={input}
-              className="input__mine"
-              placeholder="Search or start a new chat"
+              <RxArrowLeft />
+            </IconButton>
+            <Typography fontWeight={600}>Profile</Typography>
+          </Grid>
+          <span className="profile__photo__change">
+            <span
+              style={{
+                display: "var(--display)",
+                position: "absolute",
+                zIndex: 300,
+                textAlign: "center",
+                flexDirection: "column",
+                alignItems: "center",
+                width: "20px",
+              }}
+            >
+              <BsFillCameraFill />
+              CHANGE PROFILE PHOTO
+            </span>
+            <Avatar
+              sx={{ height: 200, width: 200 }}
+              variant="circular"
+              src={image}
+              alt="me"
             />
-          </Container>
-          <IconButton
-            sx={{
-              color: "#eceff1",
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            }}
+          </span>
+          <Grid
+            container
+            alignItems={"flex-start"}
+            flexDirection={"column"}
+            my={5}
+            gap={2}
+            width={"100%"}
           >
-            <BsFilter />
-          </IconButton>
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        width="100%"
-        padding={".5em 1em "}
-        gap={1.5}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-        mt={15}
-        sx={{ cursor: "pointer" }}
-      >
-        <span style={{ display: "flex", alignItems: "center", gap: "1.2em" }}>
-          <IconButton
-            sx={{
-              color: "#009688",
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            }}
-          >
-            <MdArchive />
-          </IconButton>
-          <Button
-            sx={{
-              color: "#eceff1",
-              textTransform: "capitalize",
-              fontSize: "1.2rem",
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-            }}
-            variant="text"
-          >
-            Archived
-          </Button>
-        </span>
-        <Typography sx={{ color: "#009688" }}>1</Typography>
-      </Grid>
-      {["AMA", "K MA🤡", "A KA", "A😉 A", "A JA"].map((el, id) => (
-        <Grid
-          key={id}
-          container
-          width="100%"
-          alignItems={"center"}
-          justifyContent={"center"}
-          gap={1.5}
-          padding={"0 1em"}
-          sx={{
-            cursor: "pointer",
-            "--display": "none",
-            "--border": ".7px solid #b7d2df5c",
-            "&:hover": {
-              backgroundColor: "#b7d2df26",
-              "--border": "none",
-              "--display": "flex",
-            },
-          }}
-        >
-          <Avatar onClick={() => navigate(`/${el}`)} alt="friend" src={image} />
-          <span
-            style={{
-              padding: ".5em",
-              borderTop: "var(--border)",
-              flex: 5,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              borderRadius: "1px",
-            }}
-          >
-            <Grid
-              onClick={() => navigate(`/${el}`)}
-              flex={3}
-              container
-              flexDirection={"column"}
-              width={"70%"}
-            >
-              <Typography
-                variant="body1"
-                fontWeight={900}
-                component={"p"}
-                sx={{ color: "#fff" }}
-              >
-                {el}
-              </Typography>
-              <Typography
-                fontWeight={500}
-                variant="subtitle1"
-                component={"h5"}
-                sx={{ color: "#fff" }}
-              >
-                {" "}
-                My initial is {el}
-              </Typography>
-            </Grid>
-            <Grid
-              width={"20%"}
-              container
-              flexDirection={"column"}
-              alignItems={"flex-end"}
-            >
-              <Typography
-                fontWeight={900}
-                textAlign={"left"}
-                flex={1}
-                sx={{ color: "#009688" }}
-              >
-                11:23
-              </Typography>
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: ".5em",
+            <Typography color={"#009688"}>Your name</Typography>
+            <Grid container width={"100%"} justifyContent={"space-between"}>
+              <Typography fontWeight={600}>RealMann😉</Typography>
+              <IconButton
+                sx={{
+                  color: "#b7d2dfb5",
+                  border: "none",
+                  padding: 0,
+                  margin: 0,
+                  "&:hover": {
+                    backgroundColor: "transparent",
+                  },
                 }}
               >
-                <span
-                  style={{
-                    margin: 0,
-                    height: "1.3em",
-                    width: "1.3em",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#009688",
-                    borderRadius: "50%",
-                  }}
-                >
-                  {" "}
-                  <Typography
-                    fontWeight={900}
-                    fontSize={".7rem"}
-                    sx={{ color: "#263238", margin: 0, padding: 0 }}
-                  >
-                    {id + 1}
-                  </Typography>
-                </span>
-                <Menu list={list}>
-                  <RiArrowDownSLine />
-                </Menu>
-              </span>
+                <FaPen />
+              </IconButton>
             </Grid>
-          </span>
-        </Grid>
-      ))}
+          </Grid>
+          <Typography color={"#b7d2dfb5"}>
+            This is not your username or pin. This name will be visible to your
+            WhatsApp contacts.
+          </Typography>
+          <Grid
+            container
+            alignItems={"flex-start"}
+            flexDirection={"column"}
+            my={5}
+            gap={2}
+            width={"100%"}
+          >
+            <Typography color={"#009688"}>About</Typography>
+            <Grid container width={"100%"} justifyContent={"space-between"}>
+              <Typography fontWeight={500}>
+                I’m the chosen generation ❤️✊🔥
+              </Typography>
+              <IconButton
+                sx={{
+                  color: "#b7d2dfb5",
+                  border: "none",
+                  padding: 0,
+                  margin: 0,
+                  "&:hover": {
+                    backgroundColor: "transparent",
+                  },
+                }}
+              >
+                <FaPen />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </>
+      )}
     </Grid>
   );
 }

@@ -21,7 +21,7 @@ export default function Edit() {
     <Grid
       borderLeft={"1px solid #b7d2df5c"}
       bgcolor={"#021210"}
-      width={"650px"}
+      width={{ lg: "650px", xs: "100%" }}
       container
       height={"100vh"}
       flexDirection={"column"}
@@ -41,7 +41,7 @@ export default function Edit() {
         alignItems={"center"}
         zIndex={300}
         gap={1.3}
-        width={"388px"}
+        width={{lg: "388px", xs: "50%"}}
       >
         <IconButton
           onClick={() => navigate(`/${params.id}`)}

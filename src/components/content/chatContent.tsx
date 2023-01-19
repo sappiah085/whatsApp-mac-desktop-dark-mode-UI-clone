@@ -50,7 +50,7 @@ export default function ChatContent() {
   });
   return (
     <Grid
-      width={"70%"}
+      width={{ lg: "70%", xs: "50%" }}
       height={"100vh"}
       flexWrap={"nowrap"}
       flexDirection={"row"}
@@ -76,6 +76,10 @@ export default function ChatContent() {
           backgroundSize: "contain",
           overflowY: "scroll",
           scrollBehavior: "smooth",
+        }}
+        display={{
+          lg: "flex",
+          xs: location.pathname.indexOf("edit") > -1 ? "none" : "flex",
         }}
       >
         <NavBar />
@@ -590,7 +594,7 @@ export default function ChatContent() {
           position={"fixed"}
           bottom={0}
           padding={"1em"}
-          width={editPath ? "43%" : "70%"}
+          width={{lg: editPath ? "43%" : "70%", xs: "50%"}}
           flexWrap={"nowrap"}
           zIndex={300}
         >

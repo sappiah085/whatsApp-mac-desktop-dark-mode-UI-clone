@@ -39,7 +39,7 @@ export default function NavBar() {
   return (
     <Grid
       container
-      width={editPath ? "43%" : "70%"}
+      width={{ lg: editPath ? "43%" : "70%", xs: "50%" }}
       padding={".5em 1em"}
       height={"56px"}
       bgcolor={"rgb(33,47,52)"}
