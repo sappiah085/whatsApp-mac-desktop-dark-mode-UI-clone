@@ -142,7 +142,6 @@ export default function ChatList({ handlclick }: { handlclick: () => void }) {
           >
             {!focus && (
               <IconButton
-                onClick={() => input.current.focus()}
                 sx={{
                   color: "#eceff1",
                   "&:hover": {
